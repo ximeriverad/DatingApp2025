@@ -14,7 +14,7 @@ export class App implements OnInit {
   protected readonly title = signal('Dating App');
 
   ngOnInit(): void {
-    this.http.get("htttps://localhost:5001/api/members").subscribe({
+    this.http.get("https://localhost:5001/api/members").subscribe({
       next: response => console.log(response),
       error: error => console.log(error),
       complete: () => console.log('Completed the http request')
