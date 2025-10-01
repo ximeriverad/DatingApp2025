@@ -12,7 +12,7 @@ export class AccountService {
   currentUser = signal<User | null>(null);
   baseUrl = "https://localhost:5001/api/";
 
-  register(creds: RegisterCreds) {
+  register(creds: RegisterCreds): Observable<User> {
     return this.http.post<User>(this.baseUrl + "account/register", creds).pipe(
       tap(user => {
         if (user) {
@@ -21,10 +21,22 @@ export class AccountService {
       })
     );
   }
+
+  login(creds: LoginCreds): Observable<User> {
+    return this.http.post<User>(this.baseUrl + "account/login", creds).pipe(
+      tap(user => {
+        if (user) {
+          this.setCurrentUser(user);
+        }
+      })
+    );
+  }
+
   setCurrentUser(user: User) {
     localStorage.setItem("user", JSON.stringify(user));
     this.currentUser.set(user);
   }
+
   logout() {
     localStorage.removeItem("user");
     this.currentUser.set(null);

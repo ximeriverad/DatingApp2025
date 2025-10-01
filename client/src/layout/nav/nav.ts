@@ -11,19 +11,18 @@ import { AccountService } from '../../core/services/account-service';
 export class Nav {
   protected accountService = inject(AccountService);
   protected creds: any = {};
-  protected loggedIn = signal(false);
 
-    login(): void {
-      this.accountService.login(this.creds).subscribe({
-        next: response => {
-            console.log(response),
-            this.creds = {};
-        },
-        error: error => alert(error.message)
-      });
-    }
+  login(): void {
+    this.accountService.login(this.creds).subscribe({
+      next: response => {
+        console.log(response);
+        this.creds = {};
+      },
+      error: error => alert(error.message)
+    });
+  }
 
-    logout(): void {
+  logout(): void {
     this.accountService.logout();
   }
 }
