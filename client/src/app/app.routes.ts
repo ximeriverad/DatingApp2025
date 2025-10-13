@@ -5,6 +5,7 @@ import { MemberDetail } from '../features/members/member-detail/member-detail';
 import { Lists } from '../features/lists/lists';
 import { Messages } from '../features/messages/messages';
 
+
 export const routes: Routes = [
   { path: "", component: Home },
   { path: "members", component: MemberList },
