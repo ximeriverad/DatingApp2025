@@ -1,7 +1,7 @@
 import { Component, inject, input, output } from '@angular/core';
-import { RegisterCreds } from '../../../types/registerCreds';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../../../core/services/account-service';
+import { RegisterCreds } from '../../../types/user';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +12,7 @@ import { AccountService } from '../../../core/services/account-service';
 export class Register {
   private accountService = inject(AccountService);
   cancelRegister = output<boolean>();
-  protected creds = {} as RegisterCreds;
+  protected creds = {} as RegisterCreds; 
 
   register(): void {
   this.accountService.register(this.creds).subscribe({
