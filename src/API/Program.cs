@@ -14,8 +14,9 @@ namespace API;
 [ExcludeFromCodeCoverage]
 public static class Program
 {
-public static void Main(string[] args){
-      var builder = WebApplication.CreateBuilder(args);
+    public static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddHealthChecks();
         AddServiceDefaults(builder);
 
@@ -49,6 +50,7 @@ public static void Main(string[] args){
             var logger = services.GetRequiredService<ILogger>();
             logger.LogError(ex, "Migration process failed!");
         }
+
         // Configure the HTTP request pipeline.
         app.UseMiddleware<ExceptionMiddleware>();
         if (app.Environment.IsDevelopment())
